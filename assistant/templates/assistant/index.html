@@ -1,0 +1,90 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>ORDIS</title>
+  <meta name="theme-color" content="#080B12">
+  <meta name="description" content="ORDIS, a personal AI assistant powered by Google Gemini.">
+  <link rel="manifest" href="{% url 'manifest' %}">
+  <link rel="icon" href="{% static 'assistant/icons/icon-192.png' %}">
+  <link rel="apple-touch-icon" href="{% static 'assistant/icons/icon-192.png' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'assistant/css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+  <div class="app" id="app" data-view="welcome">
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="core-slot core-slot--small" id="coreSlotSmall"></div>
+        <div class="brand-text">
+          <h1>ORDIS</h1>
+          <span class="tech">Cephalon interface</span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span id="statusDot" class="status" data-state="idle" role="status" aria-live="polite">
+          <span class="status-dot" aria-hidden="true"></span><span id="statusText">ONLINE</span>
+        </span>
+        <button id="installBtn" class="btn btn-sm btn-ordis-ghost" type="button" hidden>Install app</button>
+        <button id="clearBtn" class="btn btn-sm btn-ordis-ghost" type="button">New chat</button>
+      </div>
+    </header>
+
+    <div id="offlineBanner" class="offline-banner" role="alert" hidden>
+      You're offline. Reconnect to ask new questions. Your chat so far is still here.
+    </div>
+
+    <main class="stage">
+      <section id="welcome" class="welcome" aria-label="Welcome">
+        <div class="core-slot core-slot--large" id="coreSlotLarge">
+          {% include "assistant/_core.html" %}
+        </div>
+        <h2>Systems online. How may I assist you?</h2>
+        <p class="subtitle">ORDIS is your personal AI assistant. Ask a question, and I'll answer in plain language.</p>
+        <div class="prompt-grid">
+          <button type="button" class="prompt-card" data-prompt="Explain something complex.">
+            <span class="prompt-title">Explain something complex</span>
+            <span class="tech">Break it down</span>
+          </button>
+          <button type="button" class="prompt-card" data-prompt="Help me solve a problem.">
+            <span class="prompt-title">Help me solve a problem</span>
+            <span class="tech">Think it through</span>
+          </button>
+          <button type="button" class="prompt-card" data-prompt="Write something for me.">
+            <span class="prompt-title">Write something for me</span>
+            <span class="tech">Draft text</span>
+          </button>
+          <button type="button" class="prompt-card" data-prompt="Let's brainstorm ideas.">
+            <span class="prompt-title">Let's brainstorm ideas</span>
+            <span class="tech">Explore options</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="chat" class="chat" aria-live="polite" aria-label="Conversation"></section>
+    </main>
+
+    <div class="quick-replies" id="quickReplies">
+      <button type="button" class="btn btn-sm btn-ordis-ghost" data-prompt="Explain that in simpler words.">Explain simply</button>
+      <button type="button" class="btn btn-sm btn-ordis-ghost" data-prompt="Give me an example.">Give me an example</button>
+      <button type="button" class="btn btn-sm btn-ordis-ghost" data-prompt="Quiz me with 3 short questions on this topic.">Quiz me</button>
+    </div>
+
+    <form id="composer" class="composer" autocomplete="off">
+      <label for="prompt" class="visually-hidden">Ask ORDIS a question</label>
+      <div class="composer-box">
+        <textarea id="prompt" class="form-control" rows="1" maxlength="2000" placeholder="Ask ORDIS a question..."></textarea>
+        <button type="submit" id="sendBtn" class="btn btn-ordis-send" aria-label="Send">
+          <span id="sendLabel">Send</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 11.5 20.5 4 13 21.5l-2.2-7.3L3 11.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="composer-meta tech"><span>Enter to send</span><span>Shift + Enter for a new line</span></div>
+    </form>
+  </div>
+
+  <script src="{% static 'assistant/js/app.js' %}"></script>
+</body>
+</html>

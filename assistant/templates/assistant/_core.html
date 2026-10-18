@@ -1,0 +1,96 @@
+<div class="core" id="core" data-state="idle" aria-hidden="true">
+  <div class="core-glow"></div>
+  <div class="core-float">
+    <div class="core-tilt">
+      <svg class="core-svg" viewBox="0 0 400 400" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gRim" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#EAF3FF" stop-opacity=".95"/>
+            <stop offset=".5" stop-color="#43E8FF" stop-opacity=".45"/>
+            <stop offset="1" stop-color="#528BFF" stop-opacity=".55"/>
+          </linearGradient>
+          <radialGradient id="gFace" cx="50%" cy="46%" r="62%">
+            <stop offset="0" stop-color="#8E86FF" stop-opacity=".75"/>
+            <stop offset=".45" stop-color="#3A56D8" stop-opacity=".7"/>
+            <stop offset="1" stop-color="#0A1030" stop-opacity=".95"/>
+          </radialGradient>
+          <radialGradient id="gEye" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#FFFFFF" stop-opacity=".95"/>
+            <stop offset=".55" stop-color="#7FEFFF" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#43E8FF" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="gShimmer" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+            <stop offset=".5" stop-color="#DDF6FF" stop-opacity=".4"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+          <clipPath id="cDiamond"><polygon points="200,40 350,190 200,340 50,190"/></clipPath>
+          <path id="ribA" d="M56 198 C104 150 158 178 206 160 S304 120 352 158"/>
+          <path id="ribB" d="M50 214 C104 260 150 236 204 246 S296 264 350 226"/>
+        </defs>
+
+        <!-- Energy waves (visible only while responding) -->
+        <ellipse class="wave" cx="200" cy="190" rx="120" ry="120"/>
+        <ellipse class="wave w2" cx="200" cy="190" rx="120" ry="120"/>
+
+        <!-- Diamond body -->
+        <g class="diamond">
+          <polygon points="200,40 350,190 200,340 50,190" fill="url(#gRim)" fill-opacity=".3" stroke="none"/>
+          <polygon points="200,84 306,190 200,296 94,190" fill="url(#gFace)"/>
+          <polygon points="200,40 50,190 94,190 200,84" fill="#EAF3FF" fill-opacity=".3"/>
+          <polygon points="200,40 350,190 306,190 200,84" fill="#BFE6FF" fill-opacity=".12"/>
+          <path d="M200 40V84M350 190H306M200 340V296M50 190H94" stroke="#EAF3FF" stroke-opacity=".6" stroke-width="1.4"/>
+          <path d="M200 296V216M94 190L200 216L306 190" stroke="#CFE9FF" stroke-opacity=".32" stroke-width="1.2" fill="none"/>
+          <polygon points="200,40 350,190 200,340 50,190" fill="none" stroke="#EAF3FF" stroke-width="2.4" stroke-linejoin="round"/>
+          <polygon points="200,84 306,190 200,296 94,190" fill="none" stroke="#9FD8FF" stroke-opacity=".7" stroke-width="1.3"/>
+        </g>
+
+        <!-- Hairline cracks -->
+        <g class="cracks" clip-path="url(#cDiamond)" fill="none" stroke="#EAF3FF" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="130,150 150,168 146,190 162,214 156,262" stroke-width=".9" stroke-opacity=".6"/>
+          <polyline points="150,168 118,160 96,170" stroke-width=".7" stroke-opacity=".5"/>
+          <polyline points="238,96 232,128 246,150 240,176" stroke-width=".8" stroke-opacity=".5"/>
+          <polyline points="252,252 270,268 292,262" stroke-width=".7" stroke-opacity=".45"/>
+          <polyline points="196,250 204,276 198,310" stroke-width=".8" stroke-opacity=".5"/>
+        </g>
+
+        <!-- Light ribbons with chromatic edges -->
+        <g class="ribbons" fill="none" stroke-linecap="round">
+          <use href="#ribA" stroke="#528BFF" stroke-opacity=".22" stroke-width="12"/>
+          <use href="#ribB" stroke="#528BFF" stroke-opacity=".22" stroke-width="12"/>
+          <use href="#ribA" class="chroma-r" stroke="#FF6A7A" stroke-opacity=".6" stroke-width="2.4"/>
+          <use href="#ribB" class="chroma-r" stroke="#FF6A7A" stroke-opacity=".6" stroke-width="2.4"/>
+          <use href="#ribA" class="chroma-c" stroke="#43E8FF" stroke-opacity=".75" stroke-width="2.4"/>
+          <use href="#ribB" class="chroma-c" stroke="#43E8FF" stroke-opacity=".75" stroke-width="2.4"/>
+          <use href="#ribA" stroke="#FFFFFF" stroke-opacity=".95" stroke-width="3"/>
+          <use href="#ribB" stroke="#FFFFFF" stroke-opacity=".95" stroke-width="3"/>
+        </g>
+
+        <!-- Eye -->
+        <g class="eye">
+          <ellipse cx="200" cy="190" rx="66" ry="23" fill="url(#gEye)"/>
+          <ellipse class="eye-ring" cx="200" cy="190" rx="58" ry="19" fill="none" stroke="#C9F7FF" stroke-width="1.6"/>
+          <ellipse class="eye-dots" cx="200" cy="190" rx="74" ry="28" fill="none" stroke="#B5F1FF" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.1 5.4"/>
+          <ellipse class="eye-trace" cx="200" cy="190" rx="58" ry="19" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" pathLength="100" stroke-dasharray="10 90"/>
+        </g>
+
+        <!-- Shimmer sweep -->
+        <g clip-path="url(#cDiamond)">
+          <g class="shimmer"><rect x="-130" y="0" width="90" height="400" fill="url(#gShimmer)" transform="skewX(-20)"/></g>
+        </g>
+
+        <!-- Glitch fragments -->
+        <g class="frags" fill="#EAF3FF">
+          <rect class="frag f1" x="112" y="118" width="12" height="3"/>
+          <rect class="frag f2" x="286" y="104" width="6" height="6"/>
+          <rect class="frag f3" x="320" y="236" width="14" height="2.5"/>
+          <rect class="frag f4" x="84" y="262" width="7" height="7"/>
+          <rect class="frag f5" x="240" y="318" width="10" height="3"/>
+        </g>
+
+        <g class="markers" id="coreMarkers"></g>
+        <g class="particles" id="coreParticles"></g>
+      </svg>
+    </div>
+  </div>
+</div>
